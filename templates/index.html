@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Animales</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Consulta de Animales</h1>
+        <p>Haga clic en los botones para consultar cómo hacen los diferentes animales.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <button id="huronBtn" class="btn btn-primary btn-block">Consultar Huron</button>
+                <div id="huronResult" class="mt-3"></div>
+            </div>
+            <div class="col-md-6">
+                <button id="boaBtn" class="btn btn-primary btn-block">Consultar Boa Constrictor</button>
+                <div id="boaResult" class="mt-3"></div>
+            </div>
+            <div class="col-md-6">
+                <button id="perroBtn" class="btn btn-primary btn-block">Consultar Perro</button>
+                <div id="perroResult" class="mt-3"></div>
+            </div>
+            <div class="col-md-6">
+                <button id="gatoBtn" class="btn btn-primary btn-block">Consultar Gato</button>
+                <div id="gatoResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('huronBtn').addEventListener('click', function() {
+            fetch('/huron')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('huronResult').innerHTML = `
+                        <p><strong>Nombre:</strong> ${data.nombre}</p>
+                        <p><strong>Sonido:</strong> ${data.sonido}</p>
+                        <p><strong>Descripción:</strong> ${data.descripcion}</p>
+                    `;
+                });
+        });
+
+        document.getElementById('boaBtn').addEventListener('click', function() {
+            fetch('/boa')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('boaResult').innerHTML = `
+                        <p><strong>Nombre:</strong> ${data.nombre}</p>
+                        <p><strong>Sonido:</strong> ${data.sonido}</p>
+                        <p><strong>Descripción:</strong> ${data.descripcion}</p>
+                    `;
+                });
+        });
+
+        document.getElementById('perroBtn').addEventListener('click', function() {
+            fetch('/perro')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('perroResult').innerHTML = `
+                        <p><strong>Nombre:</strong> ${data.nombre}</p>
+                        <p><strong>Sonido:</strong> ${data.sonido}</p>
+                        <p><strong>Descripción:</strong> ${data.descripcion}</p>
+                    `;
+                });
+        });
+
+        document.getElementById('gatoBtn').addEventListener('click', function() {
+            fetch('/gato')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('gatoResult').innerHTML = `
+                        <p><strong>Nombre:</strong> ${data.nombre}</p>
+                        <p><strong>Sonido:</strong> ${data.sonido}</p>
+                        <p><strong>Descripción:</strong> ${data.descripcion}</p>
+                    `;
+                });
+        });
+    </script>
+</body>
+</html>
